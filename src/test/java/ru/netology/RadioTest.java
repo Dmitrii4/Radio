@@ -1,57 +1,88 @@
 package ru.netology;
 
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
+
 class RadioTest {
 
-    //    change stations
     @Test
-    void changeOnNextRadioStations() {
-        Radio stations = new Radio();
-        stations.setMaxRadioStation(9);
-        stations.setCurrentRadioStationNumber(9);
-        stations.setMinRadioStation(0);
-        stations.changeOnNextRadioStations();
-        long expected = 0;
-        assertEquals(expected, stations.getCurrentRadioStationNumber());
-        System.out.println(expected);
+    void getNumberstationAndsetNumberstation() {
+        Radio Radio = new Radio();
+        Radio.setMinstation(0);
+        Radio.setMaxstation(9);
+        Radio.setNumberstation(3);
+        assertEquals(3, Radio.getNumberstation());
+
     }
 
     @Test
-    void changeOnPrevRadioStations() {
-        Radio stations = new Radio();
-        stations.setMaxRadioStation(9);
-        stations.setCurrentRadioStationNumber(0);
-        stations.setMinRadioStation(0);
-        stations.changeOnPrevRadioStations();
-        long expected = 9;
-        assertEquals(expected, stations.getCurrentRadioStationNumber());
-        System.out.println(expected);
-    }
-
-    //    change volume
-    @Test
-    void changeVolumeIncrease() {
-        Radio stations = new Radio();
-        stations.setMaxVolume(10);
-        stations.setCurrentVolume(9);
-        stations.setMinVolume(0);
-        stations.changeVolumeIncrease();
-        long expected = 10;
-        assertEquals(expected,stations.getCurrentVolume());
-        System.out.println(expected);
+    void getMinstationAndsetMinstation() {
+        Radio Radio = new Radio();
+        Radio.setMinstation(0);
+        assertEquals(0, Radio.getMinstation());
     }
 
     @Test
-    void changeVolumeDecrease() {
-        Radio stations = new Radio();
-        stations.setMaxVolume(10);
-        stations.setCurrentVolume(0);;
-        stations.setMinVolume(0);
-        stations.changeVolumeDecrease();
-        long expected = 0;
-        assertEquals(expected,stations.getCurrentVolume());
-        System.out.println(expected);
+    void getMaxstationsetMaxstation() {
+        Radio radioman = new Radio();
+        radioman.setMaxstation(9);
+        assertEquals(9, radioman.getMaxstation());
+    }
+
+    @Test
+    void getSoundAndsetSound() {
+        Radio Radio = new Radio();
+        Radio.setMinsound(0);
+        Radio.setMaxsound(10);
+
+        Radio.setSound(5);
+        assertEquals(5, Radio.getSound());
+    }
+
+    @Test
+    void getMinsoundAndsetMinsound() {
+        Radio Radio = new Radio();
+        Radio.setMinsound(0);
+        assertEquals(0, Radio.getMinsound());
+    }
+
+    @Test
+    void getMaxsound() {
+        Radio radioman = new Radio();
+        radioman.setMaxsound(10);
+        assertEquals(10, radioman.getMaxsound());
+    }
+
+    @Test
+    void setNumberstation() {
+        Radio Radio = new Radio();
+        Radio.setMaxstation(9);
+        Radio.setMinstation(0);
+        Radio.setNumberstation(10);
+        assertEquals(0, Radio.getMinstation());
+
+        Radio.setMaxstation(9);
+        Radio.setMinstation(0);
+        Radio.setNumberstation(-1);
+        assertEquals(9, Radio.getMaxstation());
+
+        Radio.setMinstation(0);
+        Radio.setNumberstation(-1);
+        assertEquals(0, Radio.getMinstation());
+
+
+    }
+
+    @Test
+    void setSound() {
+        Radio Radio = new Radio();
+        Radio.setMaxsound(10);
+        Radio.setSound(11);
+        assertEquals(10, Radio.getMaxsound());
+
+        Radio.setMinsound(0);
+        Radio.setSound(-1);
+        assertEquals(0, Radio.getSound());
     }
 }
-
