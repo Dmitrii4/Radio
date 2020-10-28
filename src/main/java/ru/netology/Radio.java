@@ -1,70 +1,75 @@
 package ru.netology;
 
 public class Radio {
-    private int numberstation;
-    private int minstation;
-    private int maxstation;
-    private int sound;
-    private int minsound;
-    private int maxsound;
+    private int currentRadioStation;
+    private int volume;
 
-    public int getNumberstation() {
-        return numberstation;
+    public int getCurrentRadioStation() {
+        return currentRadioStation;
     }
 
-    public void setNumberstation(int numberstation) {
-        if (numberstation > maxstation) {
+    public void setCurrentRadioStation(int currentRadioStation) {
+        if (currentRadioStation > 9) {
             return;
         }
-        if (numberstation < minstation) {
+        if (currentRadioStation < 0) {
             return;
         }
-        this.numberstation = numberstation;
+        this.currentRadioStation = currentRadioStation;
     }
 
-    public int getMinstation() {
-        return minstation;
-    }
 
-    public void setMinstation(int minstation) {
-        this.minstation = minstation;
-    }
-
-    public int getMaxstation() {
-        return maxstation;
-    }
-
-    public void setMaxstation(int maxstation) {
-        this.maxstation = maxstation;
-    }
-
-    public int getSound() {
-        return sound;
-    }
-
-    public void setSound(int sound) {
-        if (sound > maxsound) {
+    public void changeOnPreviousRadioStation() {
+        if (currentRadioStation == 0) {
+            this.currentRadioStation = 9;
             return;
         }
-        if (sound < minsound) {
+        this.currentRadioStation--;
+    }
+
+
+    public void changeOnNextRadioStation() {
+        if (currentRadioStation == 9) {
+            this.currentRadioStation = 0;
             return;
         }
-        this.sound = sound;
+        this.currentRadioStation++;
     }
 
-    public int getMinsound() {
-        return minsound;
+
+    public int getVolume() {
+        return volume;
     }
 
-    public void setMinsound(int minsound) {
-        this.minsound = minsound;
+    public void setVolume(int volume) {
+        if (volume < 0) {
+            return;
+        }
+        if (volume > 10) {
+            return;
+        }
+        this.volume = volume;
     }
 
-    public int getMaxsound() {
-        return maxsound;
+    public void volumeUpForOne() {
+
+        if (volume == 10) {
+            this.volume = volume;
+        }
+        if (volume < 10) {
+            this.volume++;
+        }
     }
 
-    public void setMaxsound(int maxsound) {
-        this.maxsound = maxsound;
+    public void volumeDownForOne() {
+        if (volume == 0) {
+            this.volume = volume;
+        }
+        if (volume > 0) {
+            this.volume--;
+        }
     }
+
 }
+
+
